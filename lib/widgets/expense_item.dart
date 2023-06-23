@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import '../models/expenses.dart';
 
 class ExpenseItem extends StatelessWidget {
-  const ExpenseItem(this.expenses, {super.key});
+  const ExpenseItem(this.expense, {super.key});
 
-  final Expenses expenses;
+  final Expenses expense;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class ExpenseItem extends StatelessWidget {
       child: Card(
         child: Column(
           children: [
-            Text(expenses.title),
+            Text(expense.title),
             const SizedBox(
               height: 10,
             ),
@@ -25,10 +25,10 @@ class ExpenseItem extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  Text('\$${expenses.amount.toStringAsFixed(2)}'),
+                  Text('\$${expense.amount.toStringAsFixed(2)}'),
                   const Spacer(),
-                  Icon(categoryIcons[expenses.category]),
-                  Text(expenses.date.toString()),
+                  Icon(categoryIcons[expense.category]),
+                  Text(expense.date.toString()),
                 ],
               ),
             )

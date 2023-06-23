@@ -30,10 +30,19 @@ class _HomePageState extends State<HomePage> {
         category: Category.work),
   ];
 
-  void _openExpenseOverlay(){
-    showModalBottomSheet(context: context, builder: (ctx) {
-      return NewExpense();
-    },);
+  void _openExpenseOverlay() {
+    showModalBottomSheet(
+      context: context,
+      builder: (ctx) => NewExpense(
+          onAddExpense: _addExpense,
+        ),
+    );
+  }
+
+  void _addExpense(Expenses expense) {
+    setState(() {
+      _registeredExpenses.add(expense);
+    });
   }
 
   @override
@@ -42,9 +51,10 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text("Expense Tracker App"),
         actions: [
-          IconButton(onPressed: (){
-            _openExpenseOverlay();
-          },
+          IconButton(
+              onPressed: () {
+                _openExpenseOverlay();
+              },
               icon: const Icon(Icons.add)),
         ],
       ),
