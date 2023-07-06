@@ -1,7 +1,8 @@
+import 'package:expense_tracker_app/widgets/chart/chart.dart';
 import 'package:expense_tracker_app/widgets/expenses_list.dart';
 import 'package:expense_tracker_app/widgets/new_expense.dart';
 import 'package:flutter/material.dart';
-
+import 'package:expense_tracker_app/widgets/chart/chart.dart';
 import '../models/expenses.dart';
 
 class HomePage extends StatefulWidget {
@@ -95,7 +96,7 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("Chart here"),
+            Chart(expenses: _registeredExpenses),
             Expanded(
               child: mainContent,
             ),

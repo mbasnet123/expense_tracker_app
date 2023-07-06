@@ -5,6 +5,11 @@ var kColorScheme = ColorScheme.fromSeed(
   seedColor: Color.fromARGB(255, 147, 203, 243),
 );
 
+var kDarkColorScheme = ColorScheme.fromSeed(
+  brightness: Brightness.dark,
+  seedColor: Color.fromARGB(255, 137, 200, 243),
+);
+
 void main() {
   runApp(MyApp());
 }
@@ -15,6 +20,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      darkTheme: ThemeData.dark().copyWith(
+        useMaterial3: true,
+        colorScheme: kDarkColorScheme,
+        cardTheme: CardTheme().copyWith(
+          color: kDarkColorScheme.secondaryContainer,
+          margin: EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 0,
+          ),
+        ),
+      ),
       theme: ThemeData().copyWith(
         useMaterial3: true,
         // scaffoldBackgroundColor: Color.fromARGB(255, 147, 203, 243),
@@ -24,7 +40,10 @@ class MyApp extends StatelessWidget {
             foregroundColor: kColorScheme.primaryContainer),
         cardTheme: CardTheme().copyWith(
           color: kColorScheme.secondaryContainer,
-          margin: EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+          margin: EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 0,
+          ),
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
@@ -40,6 +59,7 @@ class MyApp extends StatelessWidget {
             ),
       ),
       debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.system,
       home: HomePage(),
     );
   }

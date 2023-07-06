@@ -29,7 +29,31 @@ class Expenses {
   final DateTime date;
   final Category category;
 
-  String get formattedDate{
+  String get formattedDate {
     return formatter.format(date);
+  }
+}
+
+class ExpenseSheet {
+  const ExpenseSheet({
+    required this.category,
+    required this.expenses,
+  });
+
+  ExpenseSheet.forCategory(List<Expenses> allExpenses, this.category)
+      : expenses = allExpenses
+            .where((expense) => expense.category == category)
+            .toList();
+
+  final Category category;
+  final List<Expenses> expenses;
+
+  double get totalExpenses {
+    double sum = 0;
+
+    for (final expense in expenses) {
+      sum += expense.amount;
+    }
+    return sum;
   }
 }
